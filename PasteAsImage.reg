@@ -5,18 +5,18 @@ Windows Registry Editor Version 5.00
 "Icon"="imageres.dll,-72"
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\PasteAsImage\command]
-@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path = Join-Path '%V' ('PastedImage_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + '.png'); $img.Save($path, [System.Drawing.Imaging.ImageFormat]::Png) }\""
+@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path = Join-Path '%V' ('PastedImage_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + '.png'); $img.Save($path, [System.Drawing.Imaging.ImageFormat]::Png) } else { [System.Windows.Forms.MessageBox]::Show('Clipboard does not contain an image.', 'Error', 0, 16) }\""
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\shell\PasteAsImage]
 @="Paste as new Image"
 "Icon"="imageres.dll,-72"
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\shell\PasteAsImage\command]
-@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path = Join-Path '%1' ('PastedImage_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + '.png'); $img.Save($path, [System.Drawing.Imaging.ImageFormat]::Png) }\""
+@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path = Join-Path '%1' ('PastedImage_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + '.png'); $img.Save($path, [System.Drawing.Imaging.ImageFormat]::Png) } else { [System.Windows.Forms.MessageBox]::Show('Clipboard does not contain an image.', 'Error', 0, 16) }\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\image\shell\PasteAndOverwrite]
 @="Paste & Overwrite"
 "Icon"="imageres.dll,-72"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\image\shell\PasteAndOverwrite\command]
-@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $res = [System.Windows.Forms.MessageBox]::Show('Overwrite this image with the clipboard content?', 'Confirm Overwrite', 4, 48); if ($res -eq 'Yes') { $ext = [System.IO.Path]::GetExtension('%1').ToLower(); $fmt = [System.Drawing.Imaging.ImageFormat]::Png; if ($ext -match 'jpe?g') { $fmt = [System.Drawing.Imaging.ImageFormat]::Jpeg } elseif ($ext -match 'gif') { $fmt = [System.Drawing.Imaging.ImageFormat]::Gif } elseif ($ext -match 'bmp') { $fmt = [System.Drawing.Imaging.ImageFormat]::Bmp }; $img.Save('%1', $fmt) } }\""
+@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $res = [System.Windows.Forms.MessageBox]::Show('Overwrite this image with the clipboard content?', 'Confirm Overwrite', 4, 48); if ($res -eq 'Yes') { $ext = [System.IO.Path]::GetExtension('%1').ToLower(); $fmt = [System.Drawing.Imaging.ImageFormat]::Png; if ($ext -match 'jpe?g') { $fmt = [System.Drawing.Imaging.ImageFormat]::Jpeg } elseif ($ext -match 'gif') { $fmt = [System.Drawing.Imaging.ImageFormat]::Gif } elseif ($ext -match 'bmp') { $fmt = [System.Drawing.Imaging.ImageFormat]::Bmp }; $img.Save('%1', $fmt) } } else { [System.Windows.Forms.MessageBox]::Show('Clipboard does not contain an image.', 'Error', 0, 16) }\""
