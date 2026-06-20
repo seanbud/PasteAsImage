@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\PasteAsImage]
+@="Paste as new Image"
+"Icon"="imageres.dll,-72"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\PasteAsImage\command]
+@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path = Join-Path '%V' ('PastedImage_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + '.png'); $img.Save($path, [System.Drawing.Imaging.ImageFormat]::Png) }\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\PasteAsImage]
+@="Paste as new Image"
+"Icon"="imageres.dll,-72"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\PasteAsImage\command]
+@="powershell.exe -WindowStyle Hidden -Command \"Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $img = [System.Windows.Forms.Clipboard]::GetImage(); if ($img) { $path = Join-Path '%1' ('PastedImage_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + '.png'); $img.Save($path, [System.Drawing.Imaging.ImageFormat]::Png) }\""
