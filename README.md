@@ -16,3 +16,9 @@ A zero-dependency Windows utility that lets you paste the image on your clipboar
 Delete the following keys from your registry:
 - `HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\PasteAsImage`
 - `HKEY_CURRENT_USER\Software\Classes\Directory\shell\PasteAsImage`
+
+## Paste & Overwrite
+1. Right-click an existing image file in Explorer.
+2. Select **Paste & Overwrite**.
+3. Accept the confirmation prompt.
+4. The image will be replaced with the contents of your clipboard.
